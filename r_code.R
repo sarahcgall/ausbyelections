@@ -31,7 +31,7 @@ wiki <- wiki %>%
 #Scrape results per wiki page
 
 #Parse URLs
-pages <- c("2020_Eden-Monaro_by-election", "2018_Wentworth_by-election", "2018_Braddon_by-election", "2018_Fremantle_by-election", "2018_Longman_by-election", "2018_Mayo_by-election", "2018_Perth_by-election", "2018_Batman_by-election", "2017_Bennelong_by-election", "2017_New_England_by-election",
+pages <- c("2020_Eden-Monaro_by-election","2018_Wentworth_by-election", "2018_Braddon_by-election", "2018_Fremantle_by-election", "2018_Longman_by-election", "2018_Mayo_by-election", "2018_Perth_by-election", "2018_Batman_by-election", "2017_Bennelong_by-election", "2017_New_England_by-election",
            "2015_North_Sydney_by-election","2015_Canning_by-election","2014_Griffith_by-election","2009_Higgins_by-election", "2009_Bradfield_by-election","2008_Lyne_by-election","2008_Mayo_by-election","2008_Gippsland_by-election","2005_Werriwa_by-election","2002_Cunningham_by-election",
            "2001_Aston_by-election","2001_Ryan_by-election","2000_Isaacs_by-election","1999_Holt_by-election","1997_Fraser_by-election","1996_Lindsay_by-election","1996_Blaxland_by-election","1995_Wentworth_by-election","1995_Canberra_by-election","1994_Kooyong_by-election",
            "1994_Mackellar_by-election","1994_Warringah_by-election","1994_Bonython_by-election","1994_Fremantle_by-election","1994_Werriwa_by-election","1992_Wills_by-election","1991_Menzies_by-election","1989_Gwydir_by-election","1988_Oxley_by-election","1988_Groom_by-election",
@@ -59,15 +59,15 @@ captionall <- c("[6]","[5]","[4]","[4]","[4]","[4]","[4]","[3]","[3]","[3]",
                 "[4]","[6]","[4]","[3]","[3]","","[2]","","","",
                 "","","","","","","","","","",
                 "","","","","","","","","","",
-                "","","","","","","","","","",
-                "","","","","","","","","","",
+                "","","","","","","","[1]","","",
+                "","[1]","","","","","","","","",
                 "","","","","[2]","","[2]","[2]","[2]","[2]",
                 "[2]","","","","","","","","","",
                 "","","","","","","","","","",
                 "","","","","","","[2]","","","",
                 "","[2]","","","","","","","","",
                 "","","","","[2]","","","","","",
-                "","","","","","","","","","",
+                "","","","","","","[1]","","","",
                 "","","","","","","","","","",
                 "","","","","","","","","","",
                 "","","","","","","","","")
@@ -80,18 +80,18 @@ for (m in 1:length(captionall)){
 
 #Parse results table
 xpathall <- c("[6]","[5]","[4]","[4]","[4]","[4]","[4]","[3]","[3]","[3]",
-              "[4]","[2]","[2]","[2]","[3]","","[2]","","","",
+              "[4]","[6]","[4]","[3]","[3]","","[2]","","","",
               "","","","","","","","","","",
               "","","","","","","","","","",
-              "","","","","","","","","","",
-              "","","","","","","","","","",
+              "","","","","","","","[1]","","",
+              "","[1]","","","","","","","","",
               "","","","","[2]","","[2]","[2]","[2]","[2]",
               "[2]","","","","","","","","","",
               "","","","","","","","","","",
               "","","","","","","[2]","","","",
               "","[2]","","","","","","","","",
               "","","","","[2]","","","","","",
-              "","","","","","","","","","",
+              "","","","","","","[1]","","","",
               "","","","","","","","","","",
               "","","","","","","","","","",
               "","","","","","","","","")
@@ -113,12 +113,10 @@ data_firstpref <- lapply(url, function(i){
   webpages <- read_html(i[1])
   
   caption <- webpages %>% html_nodes(xpath = i[3]) %>% html_text()
-  caption <- gsub(" by-election.*", "", caption) 
-  caption <- caption %>%
-    str_split_fixed("\\s", n = 2)
-  
   caption <- as.data.frame(caption) %>%
-    transmute(Year = V1, Division = V2)
+    mutate(Year = str_extract(caption, "\\d{4}")) %>%
+    mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
+  caption$Division <- gsub(" by-election.*", "", caption$Division)
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub("\nTotal formal votes.*", "", table)
@@ -151,13 +149,11 @@ firstpref <- do.call(rbind, data_firstpref)
 data_totals <- lapply(url, function(i){
   webpages <- read_html(i[1])
   
-  caption <- webpages %>% html_nodes(xpath = i[3]) %>% html_text()
-  caption <- gsub(" by-election.*", "", caption) 
-  caption <- caption %>%
-    str_split_fixed("\\s", n = 2)
-  
+  caption <- webpages %>% html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]/caption') %>% html_text()
   caption <- as.data.frame(caption) %>%
-    transmute(Year = V1, Division = V2)
+    mutate(Year = str_extract(caption, "\\d{4}")) %>%
+    mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
+  caption$Division <- gsub(" by-election.*", "", caption$Division)
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub(".*(Total)", "", table)
@@ -197,13 +193,11 @@ totals <- do.call(rbind, data_totals)
 data_twocp <- lapply(url, function(i){
   webpages <- read_html(i[1])
   
-  caption <- webpages %>% html_nodes(xpath = i[3]) %>% html_text()
-  caption <- gsub(" by-election.*", "", caption) 
-  caption <- caption %>%
-    str_split_fixed("\\s", n = 2)
-  
+  caption <- webpages %>% html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]/caption') %>% html_text()
   caption <- as.data.frame(caption) %>%
-    transmute(Year = V1, Division = V2)
+    mutate(Year = str_extract(caption, "\\d{4}")) %>%
+    mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
+  caption$Division <- gsub(" by-election.*", "", caption$Division)
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub(".*\n(Two-party-preferred result)", "", table)
@@ -240,13 +234,11 @@ twocp <- do.call(rbind, data_twocp)
 data_twopp <- lapply(url, function(i){
   webpages <- read_html(i[1])
   
-  caption <- webpages %>% html_nodes(xpath = i[3]) %>% html_text()
-  caption <- gsub(" by-election.*", "", caption) 
-  caption <- caption %>%
-    str_split_fixed("\\s", n = 2)
-  
+  caption <- webpages %>% html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]/caption') %>% html_text()
   caption <- as.data.frame(caption) %>%
-    transmute(Year = V1, Division = V2)
+    mutate(Year = str_extract(caption, "\\d{4}")) %>%
+    mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
+  caption$Division <- gsub(" by-election.*", "", caption$Division)
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub(".*\n(Two-party-preferred result)", "", table)
