@@ -1,0 +1,160 @@
+Date,Year,Division,Cause,Former member,Party of former member,Former party type,Winner,Party of new member,New party type,Outcome,Outcome party type,Government Party,Confidence or Coalition Party,Opposition Party,Type,Parliament
+14/09/1901,1901,Darling Downs,Death,William Henry Groom,Protectionist,Government,Littleton Groom,Protectionist,Government,Protectionist hold,Government hold,Protectionist,Labour,Free Trade,Minority,1
+26/03/1902,1902,Tasmania,Death,Frederick Piesse,Free Trade,Opposition,William Hartnoll,Free Trade,Opposition,Free Trade hold,Opposition hold,Protectionist,Labour,Free Trade,Minority,1
+04/09/1903,1903,East Sydney,Resignation,George Reid,Free Trade,Opposition,George Reid,Free Trade,Opposition,Free Trade hold,Opposition hold,Protectionist,Labour,Free Trade,Minority,1
+26/02/1904,1904,Wilmot,Death,Sir Edward Braddon,Free Trade,Opposition,Norman Cameron,Free Trade,Opposition,Free Trade hold,Opposition hold,Protectionist,Labour,Free Trade,Minority,2
+30/03/1904,1904,Melbourne,Election declared void,Sir Malcolm McEacharn,Protectionist,Government,William Maloney,Labour,Confidence,Labour gain,Government loss to confidence,Protectionist,Labour,Free Trade,Minority,2
+18/05/1904,1904,Riverina,Election declared void,Robert Blackwood,Free Trade,Opposition,John Chanter,Protectionist,Confidence,Protectionist gain,Opposition loss to cofidence,Labour,Protectionist,Free Trade,Minority,2
+10/07/1907,1907,Echuca,Election declared void,Albert Palmer,Anti-Socialist,Opposition,Albert Palmer,Anti-Socialist,Opposition,Anti-Socialist hold,Opposition hold,Protectionist,Labour,Anti-Socialist,Minority,3
+13/06/1908,1908,Adelaide,Death,Charles Kingston,Protectionist,Government,Ernest Roberts,Labour,Confidence,Labour gain,Government loss to confidence,Protectionist,Labour,Anti-Socialist,Minority,3
+28/08/1909,1909,Wakefield,Death,Sir Frederick Holder,Independent,Crossbench,Richard Foster,Liberal,Government,Liberal gain,Crossbench loss to government,Commonwealth Liberal,,Anti-Socialist,Minority,3
+24/08/1910,1910,Kooyong,Resignation,William Knox,Liberal,Opposition,Sir Robert Best,Liberal,Opposition,Liberal hold,Opposition hold,Labour,,Commonwealth Liberal,Majority,4
+08/02/1911,1911,Batman,Death,Henry Beard,Labour,Government,Frank Brennan,Labour,Government,Labour hold,Government hold,Labour,,Commonwealth Liberal,Majority,4
+11/03/1911,1911,North Sydney,Death,George Edwards,Liberal,Opposition,Granville Ryrie,Liberal,Opposition,Liberal hold,Opposition hold,Labour,,Commonwealth Liberal,Majority,4
+11/11/1911,1911,Boothby,Death,Lee Batchelor,Labour,Government,David Gordon,Liberal,Opposition,Liberal gain,Government loss to opposition,Labour,,Commonwealth Liberal,Majority,4
+01/06/1912,1912,Werriwa,Resignation,David Hall,Labor,Government,Benjamin Bennett,Labor,Government,Labor hold,Government hold,Labour,,Commonwealth Liberal,Majority,4
+22/12/1913,1913,Kalgoorlie,Death,Charlie Frazer,Labor,Opposition,Hugh Mahon,Labor,Opposition,Labor hold,Opposition hold,Commonwealth Liberal,,Labor,Majority,5
+10/01/1914,1914,Adelaide,Death,Ernest Roberts,Labor,Opposition,George Edwin Yates,Labor,Opposition,Labor hold,Opposition hold,Commonwealth Liberal,,Labor,Majority,5
+06/02/1915,1915,Bendigo,Death,John Arthur,Labor,Government,Alfred Hampson,Labor,Government,Labor hold,Government hold,Labor,,Commonwealth Liberal,Majority,6
+20/02/1915,1915,Grampians,Death,Edward Jolley,Labor,Government,Carty Salmon,Liberal,Opposition,Liberal gain,Government loss to opposition,Labor,,Commonwealth Liberal,Majority,6
+06/05/1915,1915,Dalley,Death,Robert Howe,Labor,Government,William Mahony,Labor,Government,Labor hold,Government hold,Labor,,Commonwealth Liberal,Majority,6
+11/12/1915,1915,Wide Bay,Resignation,Andrew Fisher,Labor,Government,Edward Corser,Liberal,Opposition,Liberal gain,Government loss to opposition,Labor,,Commonwealth Liberal,Majority,6
+30/06/1917,1917,Darwin,Death,Charles Howroyd,Nationalist,Government,William Spence,Nationalist,Government,Nationalist hold,Government hold,Nationalist,,Labor,Majority,7
+27/10/1917,1917,Grampians,Death,Carty Salmon,Nationalist,Government,Edmund Jowett,Nationalist,Government,Nationalist hold,Government hold,Nationalist,,Labor,Majority,7
+11/05/1918,1918,Flinders,Resignation,Sir William Irvine,Nationalist,Government,Stanley Bruce,Nationalist,Government,Nationalist hold,Government hold,Nationalist,,Labor,Majority,7
+26/10/1918,1918,Swan,Death,Sir John Forrest,Nationalist,Government,Edwin Corboy,Labor,Opposition,Labor gain,Government loss to opposition,Nationalist,,Labor,Majority,7
+14/12/1918,1918,Corangamite,Death,Chester Manifold,Nationalist,Government,William Gibson,VFU,Crossbench,VFU gain,Government loss to crossbench,Nationalist,,Labor,Majority,7
+20/09/1919,1919,Echuca,Death,Albert Palmer,Nationalist,Government,William Hill,VFU,Crossbench,VFU gain,Government loss to crossbench,Nationalist,,Labor,Majority,7
+10/07/1920,1920,Ballaarat,Election declared void,Edwin Kerby,Nationalist,Government,Charles McGrath,Labor,Opposition,Labor gain,Government loss to opposition,Nationalist,Country,Labor,Majority,8
+18/12/1920,1920,Kalgoorlie,Expulsion,Hugh Mahon,Labor,Opposition,George Foley,Nationalist,Government,Nationalist gain,Opposition loss to government,Nationalist,Country,Labor,Majority,8
+30/07/1921,1921,Maranoa,Death,Jim Page,Labor,Opposition,James Hunter,Country,Government,Country gain,Opposition loss to government,Nationalist,Country,Labor,Majority,8
+03/09/1921,1921,West Sydney,Death,T. J. Ryan,Labor,Opposition,William Lambert,Labor,Opposition,Labor hold,Opposition hold,Nationalist,Country,Labor,Majority,8
+10/12/1921,1921,Parramatta,Resignation,Sir Joseph Cook,Nationalist,Government,Herbert Pratten,Nationalist,Government,Nationalist hold,Government hold,Nationalist,Country,Labor,Majority,8
+18/02/1922,1922,Yarra,Death,Frank Tudor,Labor,Opposition,James Scullin,Labor,Opposition,Labor hold,Opposition hold,Nationalist,Country,Labor,Majority,8
+06/03/1926,1926,Eden-Monaro,Death,Sir Austin Chapman,Nationalist,Government,John Perkins,Nationalist,Government,Nationalist hold,Government hold,Nationalist,Country,Labor,Majority,10
+26/02/1927,1927,Dalley,Resignation,William Mahony,Labor,Opposition,Ted Theodore,Labor,Opposition,Labor hold,Opposition hold,Nationalist,Country,Labor,Majority,10
+21/05/1927,1927,Warringah,Resignation,Sir Granville Ryrie,Nationalist,Government,Archdale Parkhill,Nationalist,Government,Nationalist hold,Government hold,Nationalist,Country,Labor,Majority,10
+16/06/1928,1928,Martin,Death,Herbert Pratten,Nationalist,Government,Graham Pratten,Nationalist,Government,Nationalist hold,Government hold,Nationalist,Country,Labor,Majority,10
+03/09/1928,1928,Wide Bay,Death,Edward Corser,Nationalist,Government,Bernard Corser,Country,Government,Country gain,Government hold - loss to coalition partner,Nationalist,Country,Labor,Majority,10
+03/08/1929,1929,Balaclava,Resignation,William Watt,Nationalist,Government,Thomas White,Nationalist,Government,Nationalist hold,Government hold,Nationalist,Country,Labor,Majority,11
+14/12/1929,1929,Franklin,Death,William McWilliams,Independent,Crossbench,Charles Frost,Labor,Government,Labor gain,Crossbench loss to government,Labor,,Nationalist,Majority,12
+31/01/1931,1931,Parkes,Resignation,Edward McTiernan,Labor,Government,Charles Marr,Nationalist,Opposition,Nationalist gain,Government loss to opposition,Labor,,Nationalist,Majority,12
+07/03/1931,1931,East Sydney,Death,John West,Labor,Government,Eddie Ward,Labor,Government,Labor hold,Government hold,Labor,,Nationalist,Majority,12
+06/02/1932,1932,East Sydney,Death,John Clasby,United Australia,Government,Eddie Ward,Labor (NSW),Opposition,Labor (NSW) gain,Government loss to opposition,United Australia,Country,Labor,Minority,13
+11/11/1933,1933,Flinders,Resignation,Stanley Bruce,United Australia,Government,James Fairbairn,United Australia,Government,United Australia hold,Government hold,United Australia,Country,Labor,Minority,13
+01/06/1935,1935,Newcastle,Death,David Watkins,Labor,Opposition,David Watkins,Labor,Opposition,Labor hold,Opposition hold,United Australia,Country,Labor,Majority,14
+17/08/1935,1935,Fawkner,Death,George Maxwell,United Australia,Government,Harold Holt,United Australia,Government,United Australia hold,Government hold,United Australia,Country,Labor,Majority,14
+12/12/1936,1936,Kennedy,Death,Darby Riordan,Labor,Opposition,Bill Riordan,Labor,Opposition,Labor hold,Opposition hold,United Australia,Country,Labor,Majority,14
+19/12/1936,1936,Darling Downs,Death,Sir Littleton Groom,United Australia,Government,Arthur Fadden,Country,Government,Country gain,Government hold - loss to coalition partner,United Australia,Country,Labor,Majority,14
+08/05/1937,1937,Gwydir,Resignation,Aubrey Abbott,Country,Government,William Scully,Labor,Opposition,Labor gain,Government loss to opposition,United Australia,Country,Labor,Majority,14
+10/12/1938,1938,Wakefield,Death,Charles Hawker,United Australia,Government,Sydney McHugh,Labor,Opposition,Labor gain,Government loss to opposition,United Australia,Country,Labor,Majority,15
+20/05/1939,1939,Griffith,Death,Frank Baker,Labor,Opposition,William Conelan,Labor,Opposition,Labor hold,Opposition hold,United Australia,Country,Labor,Majority,15
+27/05/1939,1939,Wilmot,Death,Joseph Lyons,United Australia,Government,Lancelot Spurr,Labor,Opposition,Labor gain,Government loss to opposition,United Australia,Country,Labor,Majority,15
+02/03/1940,1940,Corio,Resignation,Richard Casey,United Australia,Government,John Dedman,Labor,Opposition,Labor gain,Government loss to opposition,United Australia,Country,Labor,Majority,15
+16/11/1940,1940,Kalgoorlie,Death,Albert Green,Labor,Opposition,Herbert Johnson,Labor,Opposition,Labor hold,Opposition hold,United Australia,Country,Labor,Minority,16
+21/12/1940,1940,Swan,Death,Henry Gregory,Country,Government,Thomas Marwick,Country,Confidence,Country hold,Government hold,United Australia,Country,Labor,Minority,16
+24/05/1941,1941,Boothby,Death,John Price,United Australia,Government,Grenfell Price,United Australia,Government,United Australia hold,Government hold,United Australia,Country,Labor,Minority,16
+18/08/1945,1945,Fremantle,Death,John Curtin,Labor,Government,Kim Beazley,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,17
+09/02/1946,1946,Wimmera,Resignation,Alexander Wilson,Independent,Crossbench,Winton Turnbull,Country,Opposition,Country gain,Crossbench loss to opposition,Labor,,Liberal,Majority,17
+30/03/1946,1946,Henty,Resignation,Arthur Coles,Independent,Crossbench,Jo Gullett,Liberal,Opposition,Liberal gain,Crossbench loss to opposition,Labor,,Liberal,Majority,17
+28/07/1951,1951,Balaclava,Resignation,Thomas White,Liberal,Government,Percy Joske,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,20
+28/07/1951,1951,Macquarie,Death,Ben Chifley,Labor,Opposition,Tony Luchetti,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,20
+22/03/1952,1952,Lyne,Death,Jim Eggins,Country,Government,Philip Lucock,Country,Government,Country hold,Government hold,Liberal,Country,Labor,Majority,20
+18/10/1952,1952,Flinders,Death,Rupert Ryan,Liberal,Government,Keith Ewert,Labor,Opposition,Labor gain,Government loss to opposition,Liberal,Country,Labor,Majority,20
+29/11/1952,1952,Werriwa,Death,Bert Lazzarini,Labor,Opposition,Gough Whitlam,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,20
+20/12/1952,1952,Bradfield,Death,Billy Hughes,Liberal,Government,Harry Turner,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,20
+09/05/1953,1953,Dalley,Death,Sol Rosevear,Labor,Opposition,Arthur Greenup,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,20
+29/08/1953,1953,Corangamite,Death,Allan McDonald,Liberal,Government,Dan Mackinnon,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,20
+29/08/1953,1953,Lang,Death,Dan Mulcahy,Labor,Opposition,Frank Stewart,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,20
+19/12/1953,1953,Gwydir,Death,Thomas Treloar,Country,Government,Ian Allan,Country,Government,Country hold,Government hold,Liberal,Country,Labor,Majority,20
+21/05/1955,1955,Cook,Death,Tom Sheehan,Labor,Opposition,Jim Cope,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,21
+11/04/1956,1956,Cunningham,Death,Billy Davies,Labor,Opposition,Victor Kearney,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,22
+13/10/1956,1956,Barker,Death,Archie Cameron,Liberal,Government,Jim Forbes,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,22
+08/12/1956,1956,Wentworth,Resignation,Sir Eric Harrison,Liberal,Government,Les Bury,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,22
+15/09/1957,1957,Richmond,Death,Larry Anthony,Country,Government,Doug Anthony,Country,Government,Country hold,Government hold,Liberal,Country,Labor,Majority,22
+08/03/1958,1958,Parramatta,Resignation,Howard Beale,Liberal,Government,Sir Garfield Barwick,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,22
+09/04/1960,1960,Hunter,Resignation,H. V. Evatt,Labor,Opposition,Bert James,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,23
+09/04/1960,1960,La Trobe,Resignation,Richard Casey,Liberal,Government,John Jess,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,23
+16/07/1960,1960,Balaclava,Resignation,Percy Joske,Liberal,Government,Ray Whittorn,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,23
+16/07/1960,1960,Bendigo,Death,Percy Clarey,Labor,Opposition,Noel Beaton,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,23
+05/11/1960,1960,Calare,Resignation,John Howse,Liberal,Government,John England,Country,Government,Country gain,Government hold - loss to coalition partner,Liberal,Country,Labor,Majority,23
+10/12/1960,1960,Higinbotham,Death,Frank Timson,Liberal,Government,Don Chipp,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,23
+01/09/1962,1962,Batman,Death,Alan Bird,Labor,Opposition,Sam Benson,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,24
+01/06/1963,1963,Grey,Death,Edgar Russell,Labor,Opposition,Jack Mortimer,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,24
+28/09/1963,1963,East Sydney,Death,Eddie Ward,Labor,Opposition,Len Devine,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,24
+15/02/1964,1964,Denison,Death,Athol Townley,Liberal,Government,Adrian Gibson,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,25
+20/06/1964,1964,Angas,Resignation,Sir Alick Downer,Liberal,Government,Geoffrey Giles,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,25
+20/06/1964,1964,Parramatta,Resignation,Sir Garfied Barwick,Liberal,Government,Nigel Bowen,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,25
+05/12/1964,1964,Robertson,Resignation,Roger Dean,Liberal,Government,William Bridges-Maxwell,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,25
+27/02/1965,1965,Riverina,Resignation,Hugh Roberton,Country,Government,Bill Armstrong,Country,Government,Country hold,Government hold,Liberal,Country,Labor,Majority,25
+26/02/1966,1966,Dawson,Death,George Shaw,Country,Government,Rex Patterson,Labor,Opposition,Labor gain,Government loss to opposition,Liberal,Country,Labor,Majority,25
+02/04/1966,1966,Kooyong,Resignation,Sir Robert Menzies,Liberal,Government,Andrew Peacock,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,25
+22/07/1967,1967,Corio,Resignation,Hubert Opperman,Liberal,Government,Gordon Scholes,Labor,Opposition,Labor gain,Government loss to opposition,Liberal,Country,Labor,Majority,26
+30/09/1967,1967,Capricornia,Death,George Gray,Labor,Opposition,Doug Everingham,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,26
+24/02/1968,1968,Higgins,Death,Harold Holt,Liberal,Government,John Gorton,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,26
+19/04/1969,1969,Curtin,Resignation,Paul Hasluck,Liberal,Government,Victor Garland,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,26
+07/06/1969,1969,Bendigo,Resignation,Noel Beaton,Labor,Opposition,David Kennedy,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,26
+07/06/1969,1969,Gwydir,Resignation,Ian Allan,Country,Government,Ralph Hunt,Country,Government,Country hold,Government hold,Liberal,Country,Labor,Majority,26
+30/05/1970,1970,Australian Capital Territory,Death,Jim Fraser,Labor,Opposition,Kep Enderby,Labor,Opposition,Labor hold,Opposition hold,Liberal,Country,Labor,Majority,27
+19/09/1970,1970,Chisholm,Death,Sir Wilfrid Kent Hughes,Liberal,Government,Tony Staley,Liberal,Government,Liberal hold,Government hold,Liberal,Country,Labor,Majority,27
+20/03/1971,1971,Murray,Resignation,Sir John McEwen,Country,Government,Bruce Lloyd,Country,Government,Country hold,Government hold,Liberal,Country,Labor,Majority,27
+22/09/1973,1973,Parramatta,Resignation,Nigel Bowen,Liberal,Opposition,Philip Ruddock,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,28
+28/06/1975,1975,Bass,Resignation,Lance Barnard,Labor,Government,Kevin Newman,Liberal,Opposition,Liberal gain,Government loss to opposition,Labor,,Liberal,Majority,29
+25/10/1977,1977,Cunningham,Death,Rex Connor,Labor,Opposition,Stewart West,Labor,Opposition,Labor hold,Opposition hold,Liberal,National Country,Labor,Majority,30
+23/09/1978,1978,Werriwa,Resignation,Gough Whitlam,Labor,Opposition,John Kerin,Labor,Opposition,Labor hold,Opposition hold,Liberal,National Country,Labor,Majority,31
+23/06/1979,1979,Grayndler,Death,Frank Stewart,Labor,Opposition,Leo McLeay,Labor,Opposition,Labor hold,Opposition hold,Liberal,National Country,Labor,Majority,31
+21/02/1981,1981,Boothby,Resignation,John McLeay,Liberal,Government,Steele Hall,Liberal,Government,Liberal hold,Government hold,Liberal,National Country,Labor,Majority,32
+21/02/1981,1981,Curtin,Resignation,Victor Garland,Liberal,Government,Allan Rocher,Liberal,Government,Liberal hold,Government hold,Liberal,National Country,Labor,Majority,32
+21/02/1981,1981,McPherson,Death,Eric Robinson,Liberal,Government,Peter White,Liberal,Government,Liberal hold,Government hold,Liberal,National Country,Labor,Majority,32
+11/04/1981,1981,Wentworth,Resignation,Bob Ellicott,Liberal,Government,Peter Coleman,Liberal,Government,Liberal hold,Government hold,Liberal,National Country,Labor,Majority,32
+13/03/1982,1982,Lowe,Resignation,Sir William McMahon,Liberal,Government,Michael Maher,Labor,Opposition,Labor gain,Government loss to opposition,Liberal,National Country,Labor,Majority,32
+04/12/1982,1982,Flinders,Resignation,Sir Phillip Lynch,Liberal,Government,Peter Reith,Liberal,Government,Liberal hold,Government hold,Liberal,National Country,Labor,Majority,32
+07/05/1983,1983,Wannon,Resignation,Malcolm Fraser,Liberal,Opposition,David Hawker,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,33
+28/05/1983,1983,Bruce,Resignation,Sir Billy Snedden,Liberal,Opposition,Ken Aldred,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,33
+05/11/1983,1983,Moreton,Resignation,Sir James Killen,Liberal,Opposition,Don Cameron,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,33
+18/02/1984,1984,Corangamite,Resignation,Tony Street,Liberal,Opposition,Stewart McArthur,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,33
+18/02/1984,1984,Hughes,Resignation,Les Johnson,Labor,Government,Robert Tickner,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,33
+18/02/1984,1984,Richmond,Resignation,Doug Anthony,National,Opposition,Charles Blunt,National,Opposition,National hold,Opposition hold,Labor,,Liberal,Majority,33
+08/02/1986,1986,Scullin,Resignation,Harry Jenkins Sr.,Labor,Government,Harry Jenkins,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,34
+06/02/1988,1988,Adelaide,Resignation,Chris Hurford,Labor,Government,Mike Pratt,Liberal,Opposition,Liberal gain,Government loss to opposition,Labor,,Liberal,Majority,35
+26/03/1988,1988,Port Adelaide,Resignation,Mick Young,Labor,Government,Rod Sawford,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,35
+09/04/1988,1988,Groom,Resignation,Tom McVeigh,National,Opposition,Bill Taylor,Liberal,Opposition,Liberal gain,Opposition hold - loss to coalition partner,Labor,,Liberal,Majority,35
+08/10/1988,1988,Oxley,Resignation,Bill Hayden,Labor,Government,Les Scott,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,35
+15/04/1989,1989,Gwydir,Resignation,Ralph Hunt,National,Opposition,John Anderson,National,Opposition,National hold,Opposition hold,Labor,,Liberal,Majority,35
+11/05/1991,1991,Menzies,Resignation,Neil Brown,Liberal,Opposition,Kevin Andrews,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,36
+11/04/1992,1992,Wills,Resignation,Bob Hawke,Labor,Government,Phil Cleary,Independent,Crossbench,Independent gain,Government loss to crossbench,Labor,,Liberal,Majority,36
+28/01/1994,1994,Werriwa,Resignation,John Kerin,Labor,Government,Mark Latham,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,37
+12/03/1994,1994,Fremantle,Resignation,John Dawkins,Labor,Government,Carmen Lawrence,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,37
+19/03/1994,1994,Bonython,Resignation,Neal Blewett,Labor,Government,Martyn Evans,Labor,Government,Labor hold,Government hold,Labor,,Liberal,Majority,37
+26/03/1994,1994,Mackellar,Resignation,Jim Carlton,Liberal,Opposition,Bronwyn Bishop,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,37
+26/03/1994,1994,Warringah,Resignation,Michael MacKellar,Liberal,Opposition,Tony Abbott,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,37
+19/11/1994,1994,Kooyong,Resignation,Andrew Peacock,Liberal,Opposition,Petro Georgiou,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,37
+25/03/1995,1995,Canberra,Resignation,Ros Kelly,Labor,Government,Brendan Smyth,Liberal,Opposition,Liberal gain,Government loss to opposition,Labor,,Liberal,Majority,37
+08/04/1995,1995,Wentworth,Resignation,John Hewson,Liberal,Opposition,Andrew Thomson,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,37
+15/06/1996,1996,Blaxland,Resignation,Paul Keating,Labor,Opposition,Michael Hatton,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,38
+19/10/1996,1996,Lindsay,Disqualification,Jackie Kelly,Liberal,Government,Jackie Kelly,Liberal,Government,Liberal hold,Government hold,Liberal,National,Labor,Majority,38
+01/02/1997,1997,Fraser,Resignation,John Langmore,Labor,Opposition,Steve Dargavel,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,38
+06/11/1999,1999,Holt,Resignation,Gareth Evans,Labor,Opposition,Anthony Byrne,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,39
+12/08/2000,2000,Isaacs,Death,Greg Wilton,Labor,Opposition,Ann Corcoran,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,39
+17/03/2001,2001,Ryan,Resignation,John Moore,Liberal,Government,Leonie Short,Labor,Opposition,Labor gain,Government loss to opposition,Liberal,National,Labor,Majority,39
+14/07/2001,2001,Aston,Death,Peter Nugent,Liberal,Government,Chris Pearce,Liberal,Government,Liberal hold,Government hold,Liberal,National,Labor,Majority,39
+19/10/2002,2002,Cunningham,Resignation,Stephen Martin,Labor,Opposition,Michael Organ,Greens,Crossbench,Greens gain,Opposition loss to crossbench,Liberal,National,Labor,Majority,40
+19/03/2005,2005,Werriwa,Resignation,Mark Latham,Labor,Opposition,Chris Hayes,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,41
+28/06/2008,2008,Gippsland,Resignation,Peter McGauran,National,Opposition,Darren Chester,National,Opposition,National hold,Opposition hold,Labor,,Liberal,Majority,42
+06/09/2008,2008,Lyne,Resignation,Mark Vaile,National,Opposition,Rob Oakeshott,Independent,Crossbench,Independent gain,Opposition loss to crossbench,Labor,,Liberal,Majority,42
+06/09/2008,2008,Mayo,Resignation,Alexander Downer,Liberal,Opposition,Jamie Briggs,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,42
+05/12/2009,2009,Higgins,Resignation,Peter Costello,Liberal,Opposition,Kelly O'Dwyer,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,42
+05/12/2009,2009,Bradfield,Resignation,Brendan Nelson,Liberal,Opposition,Paul Fletcher,Liberal,Opposition,Liberal hold,Opposition hold,Labor,,Liberal,Majority,42
+08/02/2014,2014,Griffith,Resignation,Kevin Rudd,Labor,Opposition,Terri Butler,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,44
+19/09/2015,2015,Canning,Death,Don Randall,Liberal,Government,Andrew Hastie,Liberal,Government,Liberal hold,Government hold,Liberal,National,Labor,Majority,44
+05/12/2015,2015,North Sydney,Resignation,Joe Hockey,Liberal,Government,Trent Zimmerman,Liberal,Government,Liberal hold,Government hold,Liberal,National,Labor,Majority,44
+02/12/2017,2017,New England,Disqualification,Barnaby Joyce,National,Government,Barnaby Joyce,National,Government,National hold,Government hold,Liberal,National,Labor,Majority,45
+16/12/2017,2017,Bennelong,Resignation,John Alexander,Liberal,Government,John Alexander,Liberal,Government,Liberal hold,Government hold,Liberal,National,Labor,Majority,45
+17/03/2018,2018,Batman,Resignation,David Feeney,Labor,Opposition,Ged Kearney,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,45
+28/07/2018,2018,Braddon,Resignation,Justine Keay,Labor,Opposition,Justine Keay,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,45
+28/07/2018,2018,Fremantle,Resignation,Josh Wilson,Labor,Opposition,Josh Wilson,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,45
+28/07/2018,2018,Longman,Resignation,Susan Lamb,Labor,Opposition,Susan Lamb,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,45
+28/07/2018,2018,Mayo,Resignation,Rebekha Sharkie,Centre Alliance,Crossbench,Rebekha Sharkie,Centre Alliance,Crossbench,Centre Alliance hold,Crossbench hold,Liberal,National,Labor,Majority,45
+28/07/2018,2018,Perth,Resignation,Tim Hammond,Labor,Opposition,Patrick Gorman,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,45
+20/10/2018,2018,Wentworth,Resignation,Malcolm Turnbull,Liberal,Government,Kerryn Phelps,Independent,Crossbench,Independent gain,Government loss to crossbench,Liberal,National,Labor,Majority,45
+04/07/2020,2020,Eden-Monaro,Resignation,Mike Kelly,Labor,Opposition,Kristy McBain,Labor,Opposition,Labor hold,Opposition hold,Liberal,National,Labor,Majority,46

@@ -6,6 +6,7 @@ library(rlist)
 library(XML)
 library(lubridate)
 library(janitor)
+library(data.table)
 #============================================================#
 
 
@@ -13,7 +14,7 @@ library(janitor)
 #============================================================#
 #                         SCRAPE
 #============================================================#
-#Scrape data
+#Scrape by-election summary data
 wiki <- htmltab("https://en.wikipedia.org/wiki/List_of_Australian_federal_by-elections", which = 1, 
                 colNames = c("Division","Date","Cause","Former member","RM1","Party of former member","Winner","RM2","Party of new member"))
 
@@ -21,11 +22,25 @@ wiki <- htmltab("https://en.wikipedia.org/wiki/List_of_Australian_federal_by-ele
 wiki <- wiki %>%
   select(Division, Date, Cause, `Former member`, `Party of former member`, Winner, `Party of new member`)
 
-#Remove titles
+#Remove titles, change Date column, add year variable, and add outcome
 wiki <- wiki %>%
   mutate(Division = ifelse(str_detect(wiki$Division, "Parliament"), "Parliament", Division)) %>%
   filter(Division != "Parliament" & Division != "No by-elections held") %>%
-  mutate(Date = str_replace_all(Date, "\\(", ""), Date = str_replace_all(Date, "\\)",""))
+  mutate(Date = str_replace_all(Date, "\\(", ""), Date = str_replace_all(Date, "\\)",""),
+         Date = dmy(Date), Year = year(Date)) %>%
+  mutate(Outcome = ifelse(`Party of former member` == `Party of new member`, paste0(`Party of former member`, " hold"), paste0(`Party of new member`, " gain"))) %>%
+  mutate(`Government Party` = "", `Confidence or Coalition Party` = "", `Opposition Party` = "", Type = "", Parliament = "") %>%
+  select(Date, Year, Division, Cause, `Former member`, `Party of former member`, Winner, `Party of new member`, Outcome, `Government Party`, `Confidence or Coalition Party`, `Opposition Party`, Type, Parliament)
+
+#Add Gov Dates
+govlist <- read.csv("C:/Users/Sarah/RProjects/ausbyelections/data/govlist.csv")
+govlist <- govlist %>%
+  mutate(ï..Date.From = dmy(ï..Date.From), Date.To = dmy(Date.To))
+
+wiki <- read.csv("C:/Users/Sarah/RProjects/ausbyelections/data/wiki.csv")
+wiki <- wiki %>%
+  mutate(`Former member` = Former.member, `Party of former member` = Party.of.former.member, `Former party type` = Former.party.type, `Party of new member` = Party.of.new.member, `New party type` = New.party.type, `Outcome party type` = Outcome.party.type) %>%
+  select(Year, Division, Cause, `Former member`, `Party of former member`, `Former party type`, Winner, `Party of new member`, `New party type`, Outcome, `Outcome party type`, Type, Parliament)
 
 #============================================================#
 #Scrape results per wiki page
@@ -45,7 +60,7 @@ pages <- c("2020_Eden-Monaro_by-election","2018_Wentworth_by-election", "2018_Br
            "1938_Wakefield_by-election","1937_Gwydir_by-election","1936_Darling_Downs_by-election","1936_Kennedy_by-election","1935_Fawkner_by-election","1935_Newcastle_by-election","1933_Flinders_by-election","1932_East_Sydney_by-election","1931_East_Sydney_by-election","1931_Parkes_by-election",
            "1929_Franklin_by-election","1929_Balaclava_by-election","1928_Wide_Bay_by-election","1928_Martin_by-election","1927_Warringah_by-election","1927_Dalley_by-election","1926_Eden-Monaro_by-election","1922_Yarra_by-election","1921_Parramatta_by-election","1921_West_Sydney_by-election",
            "1921_Maranoa_by-election","1920_Kalgoorlie_by-election","1920_Ballaarat_by-election","1919_Echuca_by-election","1918_Corangamite_by-election","1918_Swan_by-election","1918_Flinders_by-election","1917_Grampians_by-election","1917_Darwin_by-election","1915_Wide_Bay_by-election",
-           "1915_Dalley_by-election","1915_Grampians_by-election","1915_Bendigo_by-election","1914_Adelaide_by-election","1913_Kalgoorlie_by-election","1912_Werriwa_by-election","1911_Boothby_by-election","1911_North_Sydney_by-election","/1911_Batman_by-election","1910_Kooyong_by-election",
+           "1915_Dalley_by-election","1915_Grampians_by-election","1915_Bendigo_by-election","1914_Adelaide_by-election","1913_Kalgoorlie_by-election","1912_Werriwa_by-election","1911_Boothby_by-election","1911_North_Sydney_by-election","1911_Batman_by-election","1910_Kooyong_by-election",
            "1909_Wakefield_by-election","1908_Adelaide_by-election","1907_Echuca_by-election","1904_Riverina_by-election","1904_Melbourne_by-election","1904_Wilmot_by-election","1903_East_Sydney_by-election","1902_Tasmania_by-election","1901_Darling_Downs_by-election")
 url <- list()
 for (i in 1:length(pages)){
@@ -71,6 +86,7 @@ captionall <- c("[6]","[5]","[4]","[4]","[4]","[4]","[4]","[3]","[3]","[3]",
                 "","","","","","","","","","",
                 "","","","","","","","","","",
                 "","","","","","","","","")
+
 caption <- list()
 for (m in 1:length(captionall)){
   captions <- paste0('//*[@id="mw-content-text"]/div/table', captionall[m], '/caption')
@@ -95,6 +111,7 @@ xpathall <- c("[6]","[5]","[4]","[4]","[4]","[4]","[4]","[3]","[3]","[3]",
               "","","","","","","","","","",
               "","","","","","","","","","",
               "","","","","","","","","")
+
 xpath <- list()
 for (n in 1:length(xpathall)){
   xpaths <- paste0('//*[@id="mw-content-text"]/div/table', xpathall[n], '/tbody')
@@ -117,6 +134,8 @@ data_firstpref <- lapply(url, function(i){
     mutate(Year = str_extract(caption, "\\d{4}")) %>%
     mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
   caption$Division <- gsub(" by-election.*", "", caption$Division)
+  caption <- caption %>%
+    mutate(Division = str_trim(Division, side = "both"))
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub("\nTotal formal votes.*", "", table)
@@ -136,11 +155,13 @@ data_firstpref <- lapply(url, function(i){
            `±` = as.numeric(ifelse(str_detect(`±`, "[+]") == FALSE, 
                         paste0("-", `±`), `±`)))
   
-  table <- table %>%
+    table <- table %>%
     select(Year, Division, Party, Candidate, Votes, `%`, `±`)
 
 })
 firstpref <- do.call(rbind, data_firstpref)
+firstpref %>% filter(is.na(`±`))
+firstpref <- firstpref[-c(649,769,812,823,831), ]
 
 #==========================Totals============================#
 #1)Scrape totals from each page;
@@ -149,11 +170,13 @@ firstpref <- do.call(rbind, data_firstpref)
 data_totals <- lapply(url, function(i){
   webpages <- read_html(i[1])
   
-  caption <- webpages %>% html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]/caption') %>% html_text()
+  caption <- webpages %>% html_nodes(xpath = i[3]) %>% html_text()
   caption <- as.data.frame(caption) %>%
     mutate(Year = str_extract(caption, "\\d{4}")) %>%
     mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
   caption$Division <- gsub(" by-election.*", "", caption$Division)
+  caption <- caption %>%
+    mutate(Division = str_trim(Division, side = "both"))
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub(".*(Total)", "", table)
@@ -162,13 +185,23 @@ data_totals <- lapply(url, function(i){
     str_split_fixed("\n[:upper:]", n = 3) %>%
     str_subset("\n\n") %>%
     str_split_fixed("\n\n", n = 4)
+ 
+  if(nrow(table[]) == 3){
+    table[1, 1] <- "Formal Votes"
+    table[2, 1] <- "Informal Votes"
+    table[3, 1] <- "Turnout"
+  }
   
-  table[1, 1] <- "Formal Votes"
-  table[2, 1] <- "Informal Votes"
-  table[3, 1] <- "Turnout"
+  if(nrow(table[]) == 2){
+    table[1, 1] <- "Formal Votes"
+    table[2, 1] <- "Informal Votes"
+  }
+  
+  if(nrow(table[]) == 1){
+      table[1,1] <- "Unopposed"
+    }
   
   table <- as.data.frame(table) %>%
-    mutate(Year = caption$Year, Division = caption$Division) %>%
     transmute(Type = as.character(V1), 
               Votes = as.numeric(str_remove_all(V2, ",")), 
               `%` = as.numeric(as.character(V3)),
@@ -185,6 +218,10 @@ data_totals <- lapply(url, function(i){
   
 })
 totals <- do.call(rbind, data_totals)
+#1918 Swan changed manually
+totals[402,3] <- "Turnout"
+totals[402,4] <- 19213
+totals[402,5] <- 64.3
 
 #==========================2CP===============================#
 #1)Scrape 2CP from each page;
@@ -193,11 +230,13 @@ totals <- do.call(rbind, data_totals)
 data_twocp <- lapply(url, function(i){
   webpages <- read_html(i[1])
   
-  caption <- webpages %>% html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]/caption') %>% html_text()
+  caption <- webpages %>% html_nodes(xpath = i[3]) %>% html_text()
   caption <- as.data.frame(caption) %>%
     mutate(Year = str_extract(caption, "\\d{4}")) %>%
     mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
   caption$Division <- gsub(" by-election.*", "", caption$Division)
+  caption <- caption %>%
+    mutate(Division = str_trim(Division, side = "both"))
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub(".*\n(Two-party-preferred result)", "", table)
@@ -205,28 +244,68 @@ data_twocp <- lapply(url, function(i){
   table <- table %>%
     str_split_fixed("\n\n\n", n = 30) %>%
     str_subset("\n\n") %>%
-    str_split_fixed("\n\n", n = 5)
+    str_split_fixed("\n\n", n = 5) 
   
-  table <- table[-3, ]
+  if(table[1,1] == "Party"){
+    table <- table[-1, ]
+  }
+  
+  if(nrow(table[]) >= 3){
+    if(table[3,1] == "Informal votes"){
+      table <- table[-3, ]
+    }}
+  
+  if(nrow(table[]) >= 3){
+    if(table[3,1] == "Turnout"){
+      table <- table[-3, ]
+    }}
+  
+  if(str_detect(table[2,1], "\\d.*") == TRUE){
+   table[1,4] <- table[2,1]
+   table[1,5] <- table[2,2]
+   table[3,4] <- table[4,1]
+   table[3,5] <- table[4,2]
+   table <- table[-c(2,4), ]
+  }  
+  
+  if(nrow(table[]) == 3){
+    if(str_detect(table[3,2], "Swing.*") == TRUE){
+      table <- table[-3, ]
+    }}
+  
+  if(nrow(table[]) == 3){
+    if(table[3,1] == ""){
+      table <- table[-3, ]
+    }}
+  
+  if(str_detect(table[2,1], ".*hold") == TRUE){
+    table <- table[-c(1:2),]
+  }
+  
+  if(nrow(table[]) >= 3){
+    table <- table[-c(1:13),]
+  }
   
   table <- as.data.frame(table) %>%
-    transmute(Party = as.character(V1),
-              Candidate = as.character(V2),
-              Votes = as.numeric(str_remove_all(V3, ",")), 
-              `%` = as.numeric(as.character(V4)),
-              `±` = as.character(V5),
-              `±` = ifelse(str_detect(`±`, "[+]") == FALSE, 
-                           substring(`±`, 2), `±`),
-              `±` = as.numeric(ifelse(str_detect(`±`, "[+]") == FALSE, 
-                                      paste0("-", `±`), `±`))) %>%
-    mutate(Year = caption$Year, Division = caption$Division)
-  
+   transmute(Party = as.character(V1),
+            Candidate = as.character(V2),
+            Votes = as.numeric(str_remove_all(V3, ",")), 
+            `%` = as.numeric(as.character(V4)),
+            `±` = as.character(V5),
+            `±` = ifelse(str_detect(`±`, "[+]") == FALSE, 
+                         substring(`±`, 2), `±`),
+            `±` = as.numeric(ifelse(str_detect(`±`, "[+]") == FALSE, 
+                                    paste0("-", `±`), `±`))) %>%
+   mutate(Year = caption$Year, Division = caption$Division)
+
   table <- table %>%
     select(Year, Division, Party, Candidate, Votes, `%`, `±`)
+  
   
 })
 twocp <- do.call(rbind, data_twocp)
 
+  
 #==========================2PP===============================#
 #1)Scrape 2PP from each page;
 #2)Clean data; and 
@@ -234,11 +313,13 @@ twocp <- do.call(rbind, data_twocp)
 data_twopp <- lapply(url, function(i){
   webpages <- read_html(i[1])
   
-  caption <- webpages %>% html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]/caption') %>% html_text()
+  caption <- webpages %>% html_nodes(xpath = i[3]) %>% html_text()
   caption <- as.data.frame(caption) %>%
     mutate(Year = str_extract(caption, "\\d{4}")) %>%
     mutate(Division = caption, Division = str_replace(Division, "\\d{4}", ""))
   caption$Division <- gsub(" by-election.*", "", caption$Division)
+  caption <- caption %>%
+    mutate(Division = str_trim(Division, side = "both"))
   
   table <- webpages %>% html_nodes(xpath = i[2]) %>% html_text()
   table <- gsub(".*\n(Two-party-preferred result)", "", table)
@@ -248,7 +329,55 @@ data_twopp <- lapply(url, function(i){
     str_subset("\n\n") %>%
     str_split_fixed("\n\n", n = 5)
   
-  table <- table[-3, ]
+  
+  if(table[1,1] == "Party"){
+    table <- table[-1, ]
+  }
+  
+  if(nrow(table[]) >= 3){
+    if(table[3,1] == "Informal votes"){
+      table <- table[-3, ]
+    }}
+  
+  if(nrow(table[]) >= 3){
+    if(table[3,1] == "Turnout"){
+      table <- table[-3, ]
+    }}
+  
+  if(str_detect(table[2,1], "\\d.*") == TRUE){
+    table[1,4] <- table[2,1]
+    table[1,5] <- table[2,2]
+    table[3,4] <- table[4,1]
+    table[3,5] <- table[4,2]
+    table <- table[-c(2,4), ]
+  }  
+  
+  if(nrow(table[]) == 3){
+    if(str_detect(table[3,2], "Swing.*") == TRUE){
+      table <- table[-3, ]
+    }}
+  
+  if(nrow(table[]) == 3){
+    if(table[3,1] == ""){
+      table <- table[-3, ]
+    }}
+  
+  if(str_detect(table[2,2], "Swing") == TRUE){
+    table <- table[-c(1:2),]
+  }
+ 
+  if(nrow(table[]) == 2){
+    if(str_detect(table[2,1], "Ind.*") == TRUE | str_detect(table[1,1], "Ind.*") == TRUE |
+       str_detect(table[2,1], "Democrats") == TRUE | str_detect(table[2,1], "Liberal Forum") == TRUE |
+       table[2,1] == "Labor (NSW)" | str_detect(table[1,1], "Victorian Farmers") == TRUE |
+        str_detect(table[2,1], "Single Tax League") == TRUE | table[1,1] == table[2,1]){
+      table <- table[-c(1:2),]
+    }}
+
+
+  if(nrow(table[]) >= 3){
+    table <- table[-c(1:22),]
+  }
   
   table <- as.data.frame(table) %>%
     transmute(Party = as.character(V1),
@@ -269,6 +398,15 @@ data_twopp <- lapply(url, function(i){
 twopp <- do.call(rbind, data_twopp)
 
 #============================================================#
+
+
+
+#============================================================#
+#                        DATA ANALYSIS
+#============================================================#
+
+
+
 
 
 
