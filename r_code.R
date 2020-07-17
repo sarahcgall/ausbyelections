@@ -462,8 +462,8 @@ results %>%
   labs(x="", 
        y="", 
        fill = "No. of by-elections",
-       title = "Number of Australian Federal by-elections between 1901 and 2020 by month and year",
-       caption = "Created by: @sarahcgall_") +
+       title = "Number of Australian federal by-elections between 1901 and 2020 by month and year",
+       caption = "Source: AEC & Wikipedia | Created by: @sarahcgall_") +
   theme_minimal() + 
   theme(plot.margin = margin(1,1,1,1, "cm"),
         plot.background = element_rect(fill = "white", colour = "white"),

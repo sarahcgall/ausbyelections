@@ -1,4 +1,4 @@
-# Australian Federal By Elections
+# Australian Federal By-Elections
 This is an analysis of Australia's federal by-elections from the 1901 Darling Downs by-election to the 2020 Eden-Monaro by-election.  
 
 
@@ -19,6 +19,6 @@ This is an analysis of Australia's federal by-elections from the 1901 Darling Do
 | 1984, 25 June | Compulsory voting and enrolment is extended to Indigenous Australians. *[Commonwealth Electoral Act 1984](https://www.legislation.gov.au/Details/C2004A02909)* |
 
 
-***When by-elections have occurred***
+***When have by-elections have occurred?***
 
 ![DatesPlot](https://github.com/sarahcgall/ausbyelections/blob/master/figs/DatesPlot.png)
