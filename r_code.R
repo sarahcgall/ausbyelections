@@ -8,6 +8,7 @@ library(lubridate)
 library(janitor)
 library(data.table)
 library(RColorBrewer)
+library(extrafont)
 #============================================================#
 
 
@@ -444,19 +445,37 @@ results <- results %>%
 #============================================================#
 #                        DATA ANALYSIS
 #============================================================#
+#Dates of by-elections
 results %>%
   complete(Date = seq.Date(from = ymd("1901/01/01"), 
                            to = ymd("2020/12/31"), by="month"), 
            fill = list(n = 0)) %>%
   mutate(Month = month(Date, label = TRUE), Year = year(Date)) %>%
   count(Year, Month) %>%
-  ggplot(aes(Year, Month, fill = n-1)) +
-  geom_tile(color = "grey50") + 
+  mutate(n = as.numeric(n-1)) %>%
+  ggplot(aes(Year, reorder(Month, desc(Month)), fill = n)) +
+  geom_tile(color = "grey90") + 
   scale_x_continuous(n.breaks = 25, expand=c(0,0)) +
   scale_y_discrete(expand=c(0,0)) +
-  scale_fill_gradientn(colors = brewer.pal(5, "Purples"), trans = "sqrt") +
-  coord_flip() +
-  theme_minimal() + theme(panel.grid = element_blank())
+  scale_fill_gradientn(colours = brewer.pal(9, "Purples"), trans = "sqrt") +
+  coord_fixed(ratio=1) +
+  labs(x="", 
+       y="", 
+       fill = "No. of by-elections",
+       title = "Number of Australian Federal by-elections between 1901 and 2020 by month and year",
+       caption = "Created by: @sarahcgall_") +
+  theme_minimal() + 
+  theme(plot.margin = margin(1,1,1,1, "cm"),
+        plot.background = element_rect(fill = "white", colour = "white"),
+        panel.grid = element_blank(),
+        plot.title = element_text(face = "plain", size = 12, family = "Calibri Light", hjust = 0.5, vjust = 3),
+        plot.caption = element_text(face = "plain", size = 9, family = "Calibri Light", hjust = 0, vjust = 22),
+        axis.text = element_text(face = "plain", size = 9, family = "Calibri Light"),
+        legend.text = element_text(face = "plain", size = 9, family = "Calibri Light"),
+        legend.title = element_text(face = "plain", size = 10, family = "Calibri Light"),
+        legend.position = "bottom",
+        legend.justification = c(1,0)
+        )
 
 
 
