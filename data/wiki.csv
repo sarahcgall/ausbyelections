@@ -1,4 +1,4 @@
-Date,Year,Division,Cause,Former member,Party of former member,Former party type,Winner,Party of new member,New party type,Outcome,Outcome party type,Government Party,Confidence or Coalition Party,Opposition Party,Type,Parliament
+Date,Year,Division,Cause,Former member,Party of former member,Former party type,Winner,Party of new member,New party type,Outcome,Outcome party type,Government Party,Confidence or Coalition Party,Opposition Party,Gov Type,Parliament
 14/09/1901,1901,Darling Downs,Death,William Henry Groom,Protectionist,Government,Littleton Groom,Protectionist,Government,Protectionist hold,Government hold,Protectionist,Labour,Free Trade,Minority,1
 26/03/1902,1902,Tasmania,Death,Frederick Piesse,Free Trade,Opposition,William Hartnoll,Free Trade,Opposition,Free Trade hold,Opposition hold,Protectionist,Labour,Free Trade,Minority,1
 04/09/1903,1903,East Sydney,Resignation,George Reid,Free Trade,Opposition,George Reid,Free Trade,Opposition,Free Trade hold,Opposition hold,Protectionist,Labour,Free Trade,Minority,1
@@ -23,8 +23,8 @@ Date,Year,Division,Cause,Former member,Party of former member,Former party type,
 27/10/1917,1917,Grampians,Death,Carty Salmon,Nationalist,Government,Edmund Jowett,Nationalist,Government,Nationalist hold,Government hold,Nationalist,,Labor,Majority,7
 11/05/1918,1918,Flinders,Resignation,Sir William Irvine,Nationalist,Government,Stanley Bruce,Nationalist,Government,Nationalist hold,Government hold,Nationalist,,Labor,Majority,7
 26/10/1918,1918,Swan,Death,Sir John Forrest,Nationalist,Government,Edwin Corboy,Labor,Opposition,Labor gain,Government loss to opposition,Nationalist,,Labor,Majority,7
-14/12/1918,1918,Corangamite,Death,Chester Manifold,Nationalist,Government,William Gibson,VFU,Crossbench,VFU gain,Government loss to crossbench,Nationalist,,Labor,Majority,7
-20/09/1919,1919,Echuca,Death,Albert Palmer,Nationalist,Government,William Hill,VFU,Crossbench,VFU gain,Government loss to crossbench,Nationalist,,Labor,Majority,7
+14/12/1918,1918,Corangamite,Death,Chester Manifold,Nationalist,Government,William Gibson,Victorian Farmers,Crossbench,VFU gain,Government loss to crossbench,Nationalist,,Labor,Majority,7
+20/09/1919,1919,Echuca,Death,Albert Palmer,Nationalist,Government,William Hill,Victorian Farmers,Crossbench,VFU gain,Government loss to crossbench,Nationalist,,Labor,Majority,7
 10/07/1920,1920,Ballaarat,Election declared void,Edwin Kerby,Nationalist,Government,Charles McGrath,Labor,Opposition,Labor gain,Government loss to opposition,Nationalist,Country,Labor,Majority,8
 18/12/1920,1920,Kalgoorlie,Expulsion,Hugh Mahon,Labor,Opposition,George Foley,Nationalist,Government,Nationalist gain,Opposition loss to government,Nationalist,Country,Labor,Majority,8
 30/07/1921,1921,Maranoa,Death,Jim Page,Labor,Opposition,James Hunter,Country,Government,Country gain,Opposition loss to government,Nationalist,Country,Labor,Majority,8

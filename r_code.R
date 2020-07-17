@@ -7,6 +7,7 @@ library(XML)
 library(lubridate)
 library(janitor)
 library(data.table)
+library(RColorBrewer)
 #============================================================#
 
 
@@ -39,8 +40,11 @@ govlist <- govlist %>%
 
 wiki <- read.csv("C:/Users/Sarah/RProjects/ausbyelections/data/wiki.csv")
 wiki <- wiki %>%
-  mutate(`Former member` = Former.member, `Party of former member` = Party.of.former.member, `Former party type` = Former.party.type, `Party of new member` = Party.of.new.member, `New party type` = New.party.type, `Outcome party type` = Outcome.party.type) %>%
-  select(Year, Division, Cause, `Former member`, `Party of former member`, `Former party type`, Winner, `Party of new member`, `New party type`, Outcome, `Outcome party type`, Type, Parliament)
+  mutate(`Former member` = Former.member, `Party of former member` = Party.of.former.member, `Former party type` = Former.party.type, `Party` = Party.of.new.member, `New party type` = New.party.type, `Outcome party type` = Outcome.party.type, `Gov Type` = Gov.Type) %>%
+  mutate(Byelection = as.character(paste(Year, Division, sep=" "))) %>%
+  select(Byelection, Date, Year, Division, Cause, `Former member`, `Party of former member`, `Former party type`, Winner, `Party`, `New party type`, Outcome, `Outcome party type`, `Gov Type`, Parliament)
+
+
 
 #============================================================#
 #Scrape results per wiki page
@@ -122,6 +126,8 @@ for (n in 1:length(xpathall)){
 #Merge two lists
 url <- mapply(c, url, xpath, caption, SIMPLIFY = FALSE)
 
+
+
 #=====================First Pref=============================#
 #1)Scrape first preference result from each page;
 #2)Clean data; and 
@@ -144,6 +150,11 @@ data_firstpref <- lapply(url, function(i){
     str_subset("\n\n") %>%
     str_split_fixed("\n\n", n = 5)
   
+  if(nrow(table[]) == 3){
+    if(table[3,2] == "Swing"){
+    table <- table[-c(3), ]
+  }}
+  
   table <- as.data.frame(table) %>%
     row_to_names(row_number = 1) %>%
     mutate(Year = caption$Year, Division = caption$Division) %>%
@@ -153,15 +164,15 @@ data_firstpref <- lapply(url, function(i){
            `±` = ifelse(str_detect(`±`, "[+]") == FALSE, 
                         substring(`±`, 2), `±`),
            `±` = as.numeric(ifelse(str_detect(`±`, "[+]") == FALSE, 
-                        paste0("-", `±`), `±`)))
-  
-    table <- table %>%
-    select(Year, Division, Party, Candidate, Votes, `%`, `±`)
+                        paste0("-", `±`), `±`))) %>%
+    mutate(`No. Candidates` = nrow(table[])-1) %>%
+    mutate(Byelection = paste(Year, Division, sep=" ")) %>%
+    select(Byelection, Year, Division, Party, Candidate, `No. Candidates`, Votes, `%`, `±`)
 
 })
 firstpref <- do.call(rbind, data_firstpref)
-firstpref %>% filter(is.na(`±`))
-firstpref <- firstpref[-c(649,769,812,823,831), ]
+
+
 
 #==========================Totals============================#
 #1)Scrape totals from each page;
@@ -211,17 +222,26 @@ data_totals <- lapply(url, function(i){
               `±` = as.numeric(ifelse(str_detect(`±`, "[+]") == FALSE, 
                                       paste0("-", `±`), `±`)),
               `±` = ifelse(is.na(`±`), 0, `±`)) %>%
-    mutate(Year = caption$Year, Division = caption$Division)
-  
-  table <- table %>%
-    select(Year, Division, Type, Votes, `%`, `±`)
-  
+    mutate(Year = caption$Year, Division = caption$Division) %>%
+    mutate(Byelection = as.character(paste(Year, Division, sep=" "))) %>%
+    select(Byelection, Year, Division, Type, Votes, `%`, `±`)
+
 })
 totals <- do.call(rbind, data_totals)
 #1918 Swan changed manually
-totals[402,3] <- "Turnout"
-totals[402,4] <- 19213
-totals[402,5] <- 64.3
+totals[which(totals$Byelection == "1918 Swan"),4] <- "Turnout"
+totals[which(totals$Byelection == "1918 Swan"),5] <- 19213
+totals[which(totals$Byelection == "1918 Swan"),6] <- 64.3
+
+#Widen data
+totals <- totals %>%
+  filter(Type != "Unopposed") %>%
+  pivot_wider(names_from = Type, values_from = c(Votes, `%`, `±`)) %>%
+  transmute(Byelection = Byelection, Year = Year, Division = Division, `Formal Votes` = `Votes_Formal Votes`, `Informal Votes`= `Votes_Informal Votes`, Turnout = `Votes_Turnout`, 
+  `Formal Votes (%)` = `%_Formal Votes`, `Informal Votes (%)` = `%_Informal Votes`, `Turnout (%)` = `%_Turnout`,
+  `Formal Votes (±)` = `±_Formal Votes`, `Informal Votes (±)` = `±_Informal Votes`, `Turnout (±)` = `±_Turnout`)
+
+
 
 #==========================2CP===============================#
 #1)Scrape 2CP from each page;
@@ -296,14 +316,13 @@ data_twocp <- lapply(url, function(i){
                          substring(`±`, 2), `±`),
             `±` = as.numeric(ifelse(str_detect(`±`, "[+]") == FALSE, 
                                     paste0("-", `±`), `±`))) %>%
-   mutate(Year = caption$Year, Division = caption$Division)
-
-  table <- table %>%
-    select(Year, Division, Party, Candidate, Votes, `%`, `±`)
-  
+   mutate(Year = caption$Year, Division = caption$Division) %>%
+   mutate(Byelection = paste(Year, Division, sep=" ")) %>%
+   select(Byelection, Year, Division, Party, Candidate, Votes, `%`, `±`)
   
 })
 twocp <- do.call(rbind, data_twocp)
+
 
   
 #==========================2PP===============================#
@@ -370,7 +389,9 @@ data_twopp <- lapply(url, function(i){
     if(str_detect(table[2,1], "Ind.*") == TRUE | str_detect(table[1,1], "Ind.*") == TRUE |
        str_detect(table[2,1], "Democrats") == TRUE | str_detect(table[2,1], "Liberal Forum") == TRUE |
        table[2,1] == "Labor (NSW)" | str_detect(table[1,1], "Victorian Farmers") == TRUE |
-        str_detect(table[2,1], "Single Tax League") == TRUE | table[1,1] == table[2,1]){
+        str_detect(table[2,1], "Single Tax League") == TRUE | table[1,1] == table[2,1] |
+       table[1,1] %in% c("Anti-Socialist","Country","Free Trade","Liberal","Liberal National","National","National Country","Nationalist","United Australia") == table[2,1]  %in% c("Anti-Socialist","Country","Free Trade","Liberal","Liberal National","National","National Country","Nationalist","United Australia") |
+       table[1,1] %in% c("Labor","Labor (NSW)","	Labour","Protectionist") == table[2,1] %in% c("Labor","Labor (NSW)","	Labour","Protectionist")){
       table <- table[-c(1:2),]
     }}
 
@@ -389,13 +410,32 @@ data_twopp <- lapply(url, function(i){
                            substring(`±`, 2), `±`),
               `±` = as.numeric(ifelse(str_detect(`±`, "[+]") == FALSE, 
                                       paste0("-", `±`), `±`))) %>%
-    mutate(Year = caption$Year, Division = caption$Division)
-  
-  table <- table %>%
-    select(Year, Division, Party, Candidate, Votes, `%`, `±`)
+    mutate(Year = caption$Year, Division = caption$Division) %>%
+    mutate(Group = ifelse(Party %in% c("Anti-Socialist","Country","Free Trade","Liberal","Liberal National","National","National Country","Nationalist","United Australia"), "Right", "Left")) %>%
+    mutate(Byelection = paste(Year, Division, sep=" ")) %>%
+    select(Byelection, Year, Division, Group, Party, Candidate, Votes, `%`, `±`)
   
 })
 twopp <- do.call(rbind, data_twopp)
+
+
+
+#========================Results=============================#
+#Merge first pref, totals, 2PP and 2CP with wiki dataframe 
+results <- left_join(wiki, totals[ , c("Byelection", "Formal Votes","Informal Votes","Turnout","Formal Votes (%)","Informal Votes (%)","Turnout (%)","Formal Votes (±)","Informal Votes (±)","Turnout (±)")], by = "Byelection")
+results <- left_join(results, firstpref[ , c("Byelection","Party", "No. Candidates", "Votes", "%", "±")], by = c("Byelection", "Party"))
+results <- results %>%
+  mutate(`FP Votes` = Votes, `FP Votes (%)` = `%`, `FP Votes (±)` = `±`) %>%
+  select(Byelection:`No. Candidates`,`FP Votes`:`FP Votes (±)`)
+results <- left_join(results, twopp[ , c("Byelection","Party", "Votes", "%", "±")], by = c("Byelection", "Party"))
+results <- results %>%
+  mutate(`2PP Votes` = Votes, `2PP Votes (%)` = `%`, `2PP Votes (±)` = `±`) %>%
+  select(Byelection:`FP Votes (±)`,`2PP Votes`:`2PP Votes (±)`)
+results <- left_join(results, twocp[ , c("Byelection","Party", "Votes", "%", "±")], by = c("Byelection", "Party"))
+results <- results %>%
+  mutate(Date = dmy(Date), `2CP Votes` = Votes, `2CP Votes (%)` = `%`, `2CP Votes (±)` = `±`) %>%
+  select(Byelection, Date:`2PP Votes (±)`,`2CP Votes`:`2CP Votes (±)`)
+
 
 #============================================================#
 
@@ -404,7 +444,18 @@ twopp <- do.call(rbind, data_twopp)
 #============================================================#
 #                        DATA ANALYSIS
 #============================================================#
-
+results %>%
+  complete(Date = seq.Date(from = ymd("1901/01/01"), 
+                           to = ymd("2020/12/31"), by="month"), 
+           fill = list(n = 0)) %>%
+  mutate(month = month(Date, label = TRUE), Year = year(Date)) %>%
+  count(Year, month) %>%
+  ggplot(aes(Year, month, fill = n)) +
+  geom_tile(color = "grey50") + 
+  scale_x_continuous(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_gradientn(colors = brewer.pal(7, "Purples"), trans = "sqrt") +
+  theme()
 
 
 
