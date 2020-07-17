@@ -40,9 +40,9 @@ govlist <- govlist %>%
 
 wiki <- read.csv("C:/Users/Sarah/RProjects/ausbyelections/data/wiki.csv")
 wiki <- wiki %>%
-  mutate(`Former member` = Former.member, `Party of former member` = Party.of.former.member, `Former party type` = Former.party.type, `Party` = Party.of.new.member, `New party type` = New.party.type, `Outcome party type` = Outcome.party.type, `Gov Type` = Gov.Type) %>%
+  mutate(`Former member` = Former.member, `Party of former member` = Party.of.former.member, `Former party type` = Former.party.type, Candidate = Winner, `Party` = Party.of.new.member, `New party type` = New.party.type, `Outcome party type` = Outcome.party.type, `Gov Type` = Gov.Type) %>%
   mutate(Byelection = as.character(paste(Year, Division, sep=" "))) %>%
-  select(Byelection, Date, Year, Division, Cause, `Former member`, `Party of former member`, `Former party type`, Winner, `Party`, `New party type`, Outcome, `Outcome party type`, `Gov Type`, Parliament)
+  select(Byelection, Date, Year, Division, Cause, `Former member`, `Party of former member`, `Former party type`, Candidate, `Party`, `New party type`, Outcome, `Outcome party type`, `Gov Type`, Parliament)
 
 
 
@@ -423,15 +423,15 @@ twopp <- do.call(rbind, data_twopp)
 #========================Results=============================#
 #Merge first pref, totals, 2PP and 2CP with wiki dataframe 
 results <- left_join(wiki, totals[ , c("Byelection", "Formal Votes","Informal Votes","Turnout","Formal Votes (%)","Informal Votes (%)","Turnout (%)","Formal Votes (±)","Informal Votes (±)","Turnout (±)")], by = "Byelection")
-results <- left_join(results, firstpref[ , c("Byelection","Party", "No. Candidates", "Votes", "%", "±")], by = c("Byelection", "Party"))
+results <- left_join(results, firstpref[ , c("Byelection","Candidate", "No. Candidates", "Votes", "%", "±")], by = c("Byelection", "Candidate"))
 results <- results %>%
   mutate(`FP Votes` = Votes, `FP Votes (%)` = `%`, `FP Votes (±)` = `±`) %>%
   select(Byelection:`No. Candidates`,`FP Votes`:`FP Votes (±)`)
-results <- left_join(results, twopp[ , c("Byelection","Party", "Votes", "%", "±")], by = c("Byelection", "Party"))
+results <- left_join(results, twopp[ , c("Byelection","Candidate", "Votes", "%", "±")], by = c("Byelection", "Candidate"))
 results <- results %>%
   mutate(`2PP Votes` = Votes, `2PP Votes (%)` = `%`, `2PP Votes (±)` = `±`) %>%
   select(Byelection:`FP Votes (±)`,`2PP Votes`:`2PP Votes (±)`)
-results <- left_join(results, twocp[ , c("Byelection","Party", "Votes", "%", "±")], by = c("Byelection", "Party"))
+results <- left_join(results, twocp[ , c("Byelection","Candidate", "Votes", "%", "±")], by = c("Byelection", "Candidate"))
 results <- results %>%
   mutate(Date = dmy(Date), `2CP Votes` = Votes, `2CP Votes (%)` = `%`, `2CP Votes (±)` = `±`) %>%
   select(Byelection, Date:`2PP Votes (±)`,`2CP Votes`:`2CP Votes (±)`)
@@ -448,14 +448,15 @@ results %>%
   complete(Date = seq.Date(from = ymd("1901/01/01"), 
                            to = ymd("2020/12/31"), by="month"), 
            fill = list(n = 0)) %>%
-  mutate(month = month(Date, label = TRUE), Year = year(Date)) %>%
-  count(Year, month) %>%
-  ggplot(aes(Year, month, fill = n)) +
+  mutate(Month = month(Date, label = TRUE), Year = year(Date)) %>%
+  count(Year, Month) %>%
+  ggplot(aes(Year, Month, fill = n-1)) +
   geom_tile(color = "grey50") + 
-  scale_x_continuous(expand=c(0,0)) +
+  scale_x_continuous(n.breaks = 25, expand=c(0,0)) +
   scale_y_discrete(expand=c(0,0)) +
-  scale_fill_gradientn(colors = brewer.pal(7, "Purples"), trans = "sqrt") +
-  theme()
+  scale_fill_gradientn(colors = brewer.pal(5, "Purples"), trans = "sqrt") +
+  coord_flip() +
+  theme_minimal() + theme(panel.grid = element_blank())
 
 
 
